@@ -11,12 +11,12 @@ using MySql.Data.MySqlClient;
 
 namespace Allatkorhaz
 {
-    public partial class KutyafajtakForm : Form
+    public partial class KezelesFajtak : Form
     {
         DB adatbazis;
         int aktID;
         bool modositas = false;
-        public KutyafajtakForm(DB adatbazis)
+        public KezelesFajtak(DB adatbazis)
         {
             InitializeComponent();
             this.adatbazis = adatbazis;
@@ -28,11 +28,11 @@ namespace Allatkorhaz
             try
             {
                 adatbazis.Conn.Open();
-                string sql = "SELECT * FROM fajta ORDER BY fajtanev";
+                string sql = "SELECT * FROM kezelestipus ORDER BY jelleg";
                 MySqlDataAdapter da = new MySqlDataAdapter(sql, adatbazis.Conn);
-                DataTable fajtakTable = new DataTable();
-                da.Fill(fajtakTable);
-                dgvFajta.DataSource = fajtakTable;
+                DataTable KfajtakTable = new DataTable();
+                da.Fill(KfajtakTable);
+                dgvKfajta.DataSource = KfajtakTable;
                 ElsoSorBeallitasa();
                 adatbazis.Conn.Close();
             }
@@ -45,19 +45,19 @@ namespace Allatkorhaz
 
         private void ElsoSorBeallitasa()
         {
-            dgvFajta.Rows[0].Selected = true;
+            dgvKfajta.Rows[0].Selected = true;
             FajtaTextFeltoltes(0);
         }
 
         private void FajtaTextFeltoltes(int i)
         {
-            tbFajta.Text = dgvFajta.Rows[i].Cells[1].Value.ToString();
+            tbFajta.Text = dgvKfajta.Rows[i].Cells[1].Value.ToString();
         }
 
         private void dgvFajta_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int aktualisSor = dgvFajta.CurrentCell.RowIndex;
-            aktID = Convert.ToInt32(dgvFajta.Rows[aktualisSor].Cells[0].Value);
+            int aktualisSor = dgvKfajta.CurrentCell.RowIndex;
+            aktID = Convert.ToInt32(dgvKfajta.Rows[aktualisSor].Cells[0].Value);
             FajtaTextFeltoltes(aktualisSor);
         }
 
@@ -77,7 +77,7 @@ namespace Allatkorhaz
             btnTorles.Enabled = !btnTorles.Enabled;
             btnUj.Enabled = !btnUj.Enabled;
             tbFajta.Enabled = !tbFajta.Enabled;
-            dgvFajta.Enabled = !dgvFajta.Enabled;
+            dgvKfajta.Enabled = !dgvKfajta.Enabled;
         }
 
         private void btnMegsem_Click(object sender, EventArgs e)
@@ -96,7 +96,7 @@ namespace Allatkorhaz
                 }
                 else
                 {
-                    string sql = $"UPDATE fajta SET fajtanev = '{tbFajta.Text}' WHERE id = '{aktID}'";
+                    string sql = $"UPDATE kezelestipus SET jelleg = '{tbFajta.Text}' WHERE id = '{aktID}'";
                     string uzenet = "Sikeres módosítás!";
                     SqlParancsVegrehajtas(sql, uzenet);
                 }
@@ -110,7 +110,7 @@ namespace Allatkorhaz
                 }
                 else
                 {
-                    string sql = $"INSERT INTO fajta(fajtanev) VALUES ('{tbFajta.Text}')";
+                    string sql = $"INSERT INTO kezelestipus(jelleg) VALUES ('{tbFajta.Text}')";
                     string uzenet = "Sikeres felvétel!";
                     SqlParancsVegrehajtas(sql, uzenet);
                 }
@@ -131,7 +131,7 @@ namespace Allatkorhaz
         private bool VanFajtaEllenorzes(string fajta)
         {
             adatbazis.Conn.Open();
-            string sql = $"SELECT * from fajta where id != '{aktID}' and fajtanev = '{fajta}'";
+            string sql = $"SELECT * from kezelestipus where id != '{aktID}' and jelleg = '{fajta}'";
             MySqlCommand parancs = new MySqlCommand(sql, adatbazis.Conn);
             MySqlDataReader sorok = parancs.ExecuteReader();
 
@@ -153,7 +153,7 @@ namespace Allatkorhaz
             VezerlokBeallitasa();
             if (MessageBox.Show("Biztos törölni akarod?", "Nem visszavonható művelet", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                string sql = $"DELETE FROM fajta WHERE id = '{aktID}'";
+                string sql = $"DELETE FROM kezelestipus WHERE id = '{aktID}'";
                 string uzenet = "Sikeres törlés!";
                 SqlParancsVegrehajtas(sql, uzenet);
                 VezerlokBeallitasa();

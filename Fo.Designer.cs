@@ -45,6 +45,7 @@ namespace Allatkorhaz
             this.btnKezelesek.TabIndex = 0;
             this.btnKezelesek.Text = "Kezelések";
             this.btnKezelesek.UseVisualStyleBackColor = true;
+            this.btnKezelesek.Click += new System.EventHandler(this.btnKezelesek_Click);
             // 
             // btnKutyafajtak
             // 
@@ -82,6 +83,7 @@ namespace Allatkorhaz
             this.btnKezelesfajtak.TabIndex = 4;
             this.btnKezelesfajtak.Text = "Kezelésfajták";
             this.btnKezelesfajtak.UseVisualStyleBackColor = true;
+            this.btnKezelesfajtak.Click += new System.EventHandler(this.btnKezelesfajtak_Click);
             // 
             // btnKilepes
             // 

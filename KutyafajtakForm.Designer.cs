@@ -139,6 +139,7 @@ namespace Allatkorhaz
             this.btnKilepes.TabIndex = 1;
             this.btnKilepes.Text = "Kilépés";
             this.btnKilepes.UseVisualStyleBackColor = true;
+            this.btnKilepes.Click += new System.EventHandler(this.btnKilepes_Click);
             // 
             // tbFajta
             // 

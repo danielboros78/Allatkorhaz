@@ -55,8 +55,8 @@ namespace Allatkorhaz
                         int id = olvaso.GetInt32(0);
                         string uNev = olvaso.GetString(1);
                         string jelszo = olvaso.GetString(2);
-                        int jog = olvaso.GetInt32(3);
-                        string teljesNev = olvaso.GetString(4);
+                        string teljesNev = olvaso.GetString(3);
+                        int jog = olvaso.GetInt32(4);
 
                         user = new User(id, uNev, jelszo, teljesNev, jog);
                         

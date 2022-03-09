@@ -101,3 +101,8 @@
   - DataGridView frissítése
 - Új fajta felvitele
 - Törlés
+## Kezelések form
+- Form megtervezése
+- Form elkészítése, beállítások
+- DB mezõ, konstruktor paraméter
+- 

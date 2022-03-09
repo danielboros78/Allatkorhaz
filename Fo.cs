@@ -62,5 +62,17 @@ namespace Allatkorhaz
             KutyafajtakForm frmKutyafajtak = new KutyafajtakForm(adatbazis);
             frmKutyafajtak.ShowDialog();
         }
+
+        private void btnKezelesfajtak_Click(object sender, EventArgs e)
+        {
+            KezelesFajtak frmKezelesfajtak = new KezelesFajtak(adatbazis);
+            frmKezelesfajtak.ShowDialog();
+        }
+
+        private void btnKezelesek_Click(object sender, EventArgs e)
+        {
+            KezelesekForm frmKezelesek = new KezelesekForm(adatbazis);
+            frmKezelesek.ShowDialog();
+        }
     }
 }

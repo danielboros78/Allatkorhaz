@@ -60,6 +60,18 @@
     <Compile Include="Fo.Designer.cs">
       <DependentUpon>Fo.cs</DependentUpon>
     </Compile>
+    <Compile Include="KezelesekForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KezelesekForm.Designer.cs">
+      <DependentUpon>KezelesekForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KezelesFajtak.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KezelesFajtak.Designer.cs">
+      <DependentUpon>KezelesFajtak.cs</DependentUpon>
+    </Compile>
     <Compile Include="KutyafajtakForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +86,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fo.resx">
       <DependentUpon>Fo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KezelesekForm.resx">
+      <DependentUpon>KezelesekForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KezelesFajtak.resx">
+      <DependentUpon>KezelesFajtak.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KutyafajtakForm.resx">
       <DependentUpon>KutyafajtakForm.cs</DependentUpon>
